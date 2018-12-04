@@ -33,7 +33,7 @@ type Mutation{
     EditProject(id: Int! ,projectName: String ) : Boolean!
     DeleteProject(id: Int!) : Boolean!
     CreateSubProject(SubProjectName: String! , ProjectId : Int!) : Boolean!
-    EditSubProject()
+    EditSubProject() 
     DeleteSubProject()
     CreateDetailProject()
     EditDetailProject()
