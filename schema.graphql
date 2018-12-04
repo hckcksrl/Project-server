@@ -40,20 +40,20 @@ type Mutation{
     DeleteDetailProject()
 }
 type Boolean{
-    result : Boolean!
+    result: Boolean!
 }
 type GetProjectRes {
-    result : Boolean!
-    error : String!
-    project : Project
+    result: Boolean!
+    error: String!
+    project: Project
 }
 type GetSubProjectRes {
-    result : Boolean!
-    error : String
-    subproject : SubProject
+    result: Boolean!
+    error: String
+    subproject: SubProject
 }
 type GetDetailListRes {
-    result : Boolean!
-    error : String
-    detail : DetailList
+    result: Boolean!
+    error: String
+    detail: DetailList
 }
