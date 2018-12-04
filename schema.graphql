@@ -14,7 +14,7 @@ type SubProject{
     id: Int!
     SubProjectName: String!
     DetailList: [DetailList]
-    ProjectId : Int!
+    ProjectId: Int!
 }
 type DetailList{
     id: Int!
@@ -28,11 +28,11 @@ type Query{
 }
 type Mutation{
     Login(email: String! , password: String!) : Boolean!
-    Regist(email: String! , password : String!) : Boolean!
-    CreateProject(projectName: String! , userId : Int!) : Boolean!
+    Regist(email: String! , password: String!) : Boolean!
+    CreateProject(projectName: String! , userId: Int!) : Boolean!
     EditProject(id: Int! ,projectName: String ) : Boolean!
     DeleteProject(id: Int!) : Boolean!
-    CreateSubProject(SubProjectName: String! , ProjectId : Int!) : Boolean!
+    CreateSubProject(SubProjectName: String! , ProjectId: Int!) : Boolean!
     EditSubProject() 
     DeleteSubProject()
     CreateDetailProject()
