@@ -17,7 +17,7 @@ typeorm
       require("./Entity/UserSchema"),
       require("./Entity/SubProjectSchema"),
       require("./Entity/ProjectSchema"),
-      require("./Entity/DetailProjectSchema")
+      require("./Entity/DetailListSchema")
     ],
     host: "localhost",
     port: 5432,
