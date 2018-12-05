@@ -1,28 +1,22 @@
-import { GraphQLServer, PubSub } from "graphql-yoga";
+import { GraphQLServer } from "graphql-yoga";
 import resolvers from "./resolvers";
-import * as typeorm from "typeorm";
-import { User } from "./Entity/UserSchema";
-import { Project } from "./Entity/ProjectSchema";
-import { SubProject } from "./Entity/SubProjectSchema";
-import { Detail } from "./Entity/DetailListSchema";
+import { createConnection } from "typeorm";
+import ConnectionOptions from "./database";
 
 const server = new GraphQLServer({
   typeDefs: "schema.graphql",
   resolvers
 });
 
-typeorm
-  .createConnection({
-    type: "postgres",
-    database: "project",
-    synchronize: true,
-    logging: false,
-    entities: [User, Project, SubProject, Detail],
-    host: "localhost",
-    port: 5432,
-    username: "hckcksrl",
-    password: "1234"
-  })
+const appOption = {
+  port: 4000,
+  endpoint: "/graphql",
+  playground: "/playground",
+  subscriptions: "/subscriptions"
+};
+
+createConnection(ConnectionOptions)
   .then(() => {
     server.start(() => console.log("Start"));
-  });
+  })
+  .catch(error => console.log(error));
