@@ -1,11 +1,10 @@
-class SubProject {
-  constructor(id, SubProjectName, DetailList, ProjectId) {
+class SubProjects {
+  constructor(id, SubProjectName, DetailList) {
     (this.id = id),
       (this.SubProjectName = SubProjectName),
-      (this.DetailList = DetailList),
-      (this.ProjectId = ProjectId);
+      (this.DetailList = DetailList);
   }
 }
 module.exports = {
-  SubProject: SubProject
+  SubProjects: SubProjects
 };
