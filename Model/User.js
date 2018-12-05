@@ -1,4 +1,4 @@
-class User {
+class Users {
   constructor(id, email, password, project) {
     (this.id = id),
       (this.email = email),
@@ -8,5 +8,5 @@ class User {
 }
 
 module.exports = {
-  User: User
+  Users: Users
 };
