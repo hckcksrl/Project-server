@@ -25,6 +25,7 @@ type Query{
     GetProject(id: Int!) : GetProjectRes
     GetSubProejct(id: Int!) : GetSubProjectRes
     GetDetailList(id: Int!) : GetDetailListRes
+    GetUsers : GetUserRes
 }
 type Mutation{
     Login(email: String! , password: String!) : Boolean!
@@ -56,4 +57,9 @@ type GetDetailListRes {
     result: Boolean!
     error: String
     detail: DetailList
+}
+type GetUserRes {
+    result : Boolean!
+    error : String
+    user : [User]!
 }
