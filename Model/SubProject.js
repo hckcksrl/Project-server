@@ -6,6 +6,6 @@ class SubProject {
       (this.ProjectId = ProjectId);
   }
 }
-module.export = {
+module.exports = {
   SubProject: SubProject
 };
