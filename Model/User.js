@@ -6,6 +6,7 @@ class User {
       (this.project = project);
   }
 }
-module.export = {
+
+module.exports = {
   User: User
 };
