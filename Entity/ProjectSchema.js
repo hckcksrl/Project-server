@@ -1,9 +1,10 @@
 import { EntitySchema } from "typeorm";
-import { Project } from "../Model/Project";
+import { Projects } from "../Model/Project";
+import { Users } from "../Model/User";
 
-module.exports = new EntitySchema({
-  name: "Project",
-  target: Project,
+export const Project = new EntitySchema({
+  name: "Projects",
+  target: Projects,
   columns: {
     id: {
       primary: true,
@@ -11,17 +12,22 @@ module.exports = new EntitySchema({
       generated: true
     },
     projectName: {
-      type: String
+      type: String,
+      nullable: false
     }
   },
   relations: {
-    SubProject: {
+    subProject: {
       type: "on-to-many",
-      target: "SubProject"
+      target: "SubProjects",
+      joinTable: true,
+      cascade: true
     },
     userId: {
       type: "many-to-one",
-      target: "User"
+      target: "Users",
+      joinTable: true,
+      cascade: true
     }
   }
 });
