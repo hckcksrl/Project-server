@@ -1,9 +1,9 @@
 import { EntitySchema } from "typeorm";
-import { User } from "../Model/User";
+import { Users } from "../Model/User";
 
-module.exports = new EntitySchema({
-  name: "User",
-  target: User,
+export const User = new EntitySchema({
+  name: "Users",
+  target: Users,
   columns: {
     id: {
       primary: true,
@@ -17,13 +17,16 @@ module.exports = new EntitySchema({
     },
     password: {
       type: String,
-      length: 15
+      length: 15,
+      nullable: false
     }
   },
   relations: {
     project: {
       type: "on-to-many",
-      target: "Project"
+      target: "Projects",
+      joinTable: true,
+      cascade: true
     }
   }
 });
