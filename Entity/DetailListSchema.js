@@ -1,7 +1,7 @@
 import { EntitySchema } from "typeorm";
 import { DetailList } from "../Model/DetailList";
 
-module.exports = new EntitySchema({
+export const Detail = new EntitySchema({
   name: "DetailList",
   target: DetailList,
   columns: {
@@ -17,7 +17,7 @@ module.exports = new EntitySchema({
   relations: {
     SubProjectId: {
       type: "many-to-one",
-      target: "SubProject"
+      target: "SubProjects"
     }
   }
 });
