@@ -1,0 +1,8 @@
+type Query{
+    GetDetailList(id: Int!) : GetDetailListRes
+}
+type GetDetailListRes {
+    result: Boolean!
+    error: String
+    detail: DetailList
+}
