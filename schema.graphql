@@ -25,7 +25,7 @@ type Query{
     GetProject(id: Int!) : GetProjectRes
     GetSubProejct(id: Int!) : GetSubProjectRes
     GetDetailList(id: Int!) : GetDetailListRes
-    GetUsers : GetUserRes
+    GetUsers(id: Int!) : GetUserRes
 }
 type Mutation{
     Login(email: String! , password: String!) : Boolean!
@@ -61,5 +61,5 @@ type GetDetailListRes {
 type GetUserRes {
     result : Boolean!
     error : String
-    user : [User]!
+    user : User
 }
