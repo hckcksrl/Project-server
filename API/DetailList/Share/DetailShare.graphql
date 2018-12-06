@@ -1,0 +1,5 @@
+type DetailList{
+    id: Int!
+    DetailName: String!
+    SubProjectId: Int!
+}
