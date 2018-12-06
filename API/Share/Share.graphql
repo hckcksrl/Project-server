@@ -1,0 +1,23 @@
+type User{
+    id: Int!
+    email: String!
+    password: String
+    project: [Project]
+}
+type Project{
+    id: Int!
+    projectName: String!
+    subProject: [SubProject]
+    userId: Int!
+}
+type SubProject{
+    id: Int!
+    SubProjectName: String!
+    DetailList: [DetailList]
+    ProjectId: Int!
+}
+type DetailList{
+    id: Int!
+    DetailName: String!
+    SubProjectId: Int!
+}
