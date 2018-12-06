@@ -12,12 +12,12 @@ export const User = new EntitySchema({
     },
     email: {
       type: String,
-      length: 40,
+      length: 50,
       unique: true
     },
     password: {
       type: String,
-      length: 15,
+      length: 30,
       nullable: false
     }
   },
