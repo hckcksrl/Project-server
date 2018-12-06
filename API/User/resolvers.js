@@ -1,11 +1,13 @@
-import { User } from "../../Entity/UserSchema";
-import * as typeorm from "typeorm";
-import db from "../../database";
+import Users from "../../Entity/UserSchema";
 
 const resolvers = {
   Query: {
     GetUser: async (_, args) => {
-      const users = await User.options;
+      const users = await Users.findOne({
+        where: {
+          id: args.id
+        }
+      });
       console.log(users);
       if (users != null) {
         return {
