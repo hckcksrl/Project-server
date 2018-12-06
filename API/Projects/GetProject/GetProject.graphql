@@ -1,0 +1,9 @@
+type GetProjectRes {
+    result: Boolean!
+    error: String!
+    project: Project
+}
+
+type Query{
+    GetProject(id: Int!) : GetProjectRes
+}
