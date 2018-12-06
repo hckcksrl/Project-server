@@ -23,7 +23,7 @@ type DetailList{
 }
 type Query{
     GetProject(id: Int!) : GetProjectRes
-    GetSubProejct(id: Int!) : GetSubProjectRes
+    GetSubProject(id: Int!) : GetSubProjectRes
     GetDetailList(id: Int!) : GetDetailListRes
     GetUsers(id: Int!) : GetUserRes
 }
