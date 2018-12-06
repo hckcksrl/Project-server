@@ -1,0 +1,9 @@
+type GetSubProjectRes {
+    result: Boolean!
+    error: String
+    subproject: SubProject
+}
+
+type Query{
+    GetSubProejct(id: Int!) : GetSubProjectRes
+}
