@@ -1,32 +1,53 @@
-import { EntitySchema } from "typeorm";
-import { Users } from "../Model/User";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn
+} from "typeorm";
+import Projects from "./ProjectSchema";
 
-export const User = new EntitySchema({
-  name: "Users",
-  target: Users,
-  columns: {
-    id: {
-      primary: true,
-      type: Number,
-      generated: true
-    },
-    email: {
-      type: String,
-      length: 50,
-      unique: true
-    },
-    password: {
-      type: String,
-      length: 30,
-      nullable: false
-    }
-  },
-  relations: {
-    project: {
-      type: "on-to-many",
-      target: "Projects",
-      joinTable: true,
-      cascade: true
-    }
-  }
-});
+@Entity()
+class Users extends BaseEntity {
+  @PrimaryGeneratedColumn() id = undefined;
+
+  @Column({ type: "text", nullable: false, unique: true })
+  email = "";
+
+  @Column({ type: "text", nullable: false })
+  password = "";
+
+  @OneToMany(type => Projects, projects => projects.projectName)
+  project = Projects;
+}
+export default Users;
+
+// export const User = new EntitySchema({
+//   name: "Users",
+//   target: Users,
+//   columns: {
+//     id: {
+//       primary: true,
+//       type: Number,
+//       generated: true
+//     },
+//     email: {
+//       type: String,
+//       length: 50,
+//       unique: true
+//     },
+//     password: {
+//       type: String,
+//       length: 30,
+//       nullable: false
+//     }
+//   },
+//   relations: {
+//     project: {
+//       type: "on-to-many",
+//       target: "Projects",
+//       joinTable: true,
+//       cascade: true
+//     }
+//   }
+// });
