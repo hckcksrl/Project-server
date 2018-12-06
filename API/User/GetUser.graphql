@@ -1,0 +1,9 @@
+type GetUserRes {
+    result : Boolean!
+    error : String
+    user : User
+}
+
+type Query{
+    GetUser(id: Int!) : GetUserRes
+}
