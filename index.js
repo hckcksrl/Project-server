@@ -1,11 +1,11 @@
 import { GraphQLServer } from "graphql-yoga";
-import resolvers from "./resolvers";
+// import resolvers from "./resolvers";
 import { createConnection } from "typeorm";
 import ConnectionOptions from "./database";
+import schema from "./schema";
 
 const server = new GraphQLServer({
-  typeDefs: "schema.graphql",
-  resolvers
+  schema
 });
 
 const appOption = {
@@ -15,8 +15,10 @@ const appOption = {
   subscriptions: "/subscriptions"
 };
 
+const result = () => console.log("Start");
+
 createConnection(ConnectionOptions)
   .then(() => {
-    server.start(() => console.log("Start"));
+    server.start(appOption, result);
   })
   .catch(error => console.log(error));
