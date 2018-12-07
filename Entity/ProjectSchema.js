@@ -14,13 +14,13 @@ class Projects extends BaseEntity {
   @PrimaryGeneratedColumn() id = undefined;
 
   @Column({ type: "text", nullable: false })
-  projectName = "";
+  projectName = String;
 
-  @OneToMany(type => SubProjects, sub_projects => sub_projects.SubProjectName)
+  @OneToMany(type => SubProjects, sub_projects => sub_projects.ProjectId)
   subProject = SubProjects;
 
-  @ManyToOne(type => Users, users => users.id)
-  userId = undefined;
+  @ManyToOne(type => Users, users => users.project, { cascade: true })
+  userId = Users;
 }
 export default Projects;
 
