@@ -1,3 +1,3 @@
 # Project-server
 
-## Graphql TypeOrm 
+## Graphql TypeOrm DotEnv Bcrypt
