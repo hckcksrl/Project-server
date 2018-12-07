@@ -30,9 +30,9 @@ type Query{
 type Mutation{
     Login(email: String! , password: String!) : AuthToken!
     Regist(email: String! , password: String!) : AuthToken!
-    CreateProject(projectName: String! , userId: Int!) : Boolean!
-    EditProject(id: Int! ,projectName: String ) : Boolean!
-    DeleteProject(id: Int!) : Boolean!
+    CreateProject(projectName: String! , userId: Int!) : ProjectRes!
+    EditProject(id: Int! ,projectName: String ) : ProjectRes!
+    DeleteProject(id: Int!) : ProjectRes!
     CreateSubProject(SubProjectName: String! , ProjectId: Int!) : Boolean!
     EditSubProject(id: Int! , SubProjectName: String ) : Boolean! 
     DeleteSubProject(id: Int!) : Boolean!
@@ -67,4 +67,8 @@ type GetUserRes {
     result : Boolean!
     error : String
     user : User
+}
+type ProjectRes{
+    result : Boolean!
+    error : String
 }
