@@ -4,3 +4,7 @@ type Project{
     subProject: [SubProject]
     userId: Int!
 }
+type ProjectRes{
+    result : Boolean!
+    error : String
+}
