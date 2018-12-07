@@ -1,6 +1,6 @@
 type GetProjectRes {
     result: Boolean!
-    error: String!
+    error: String
     project: Project
 }
 
