@@ -4,3 +4,8 @@ type User{
     password: String
     project: [Project]
 }
+type AuthToken{
+    result: Boolean!
+    error : String
+    token : String
+}
