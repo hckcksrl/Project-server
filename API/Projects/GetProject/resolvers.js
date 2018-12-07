@@ -8,6 +8,7 @@ const resolvers = {
           id: args.id
         }
       });
+      console.log(project);
       if (project != null) {
         return {
           result: true,
