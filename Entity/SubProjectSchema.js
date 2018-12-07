@@ -16,10 +16,12 @@ class SubProjects extends BaseEntity {
   @Column({ type: "text", nullable: false })
   SubProjectName = "";
 
-  @ManyToOne(type => Projects, projects => projects.id)
-  ProjectId = undefined;
+  @ManyToOne(type => Projects, projects => projects.subProject, {
+    cascade: true
+  })
+  ProjectId = Projects;
 
-  @OneToMany(type => DetailList, detail_list => detail_list.DetailName)
+  @OneToMany(type => DetailList, detail_list => detail_list.SubProjectId)
   DetailList = DetailList;
 }
 export default SubProjects;
