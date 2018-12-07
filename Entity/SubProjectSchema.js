@@ -19,9 +19,9 @@ class SubProjects extends BaseEntity {
   @ManyToOne(type => Projects, projects => projects.subProject, {
     cascade: true
   })
-  ProjectId = Projects;
+  Project = Projects;
 
-  @OneToMany(type => DetailList, detail_list => detail_list.SubProjectId)
+  @OneToMany(type => DetailList, detail_list => detail_list.SubProject)
   DetailList = DetailList;
 }
 export default SubProjects;
