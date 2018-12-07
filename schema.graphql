@@ -28,8 +28,8 @@ type Query{
     GetUsers(id: Int!) : GetUserRes
 }
 type Mutation{
-    Login(email: String! , password: String!) : Boolean!
-    Regist(email: String! , password: String!) : Boolean!
+    Login(email: String! , password: String!) : AuthToken!
+    Regist(email: String! , password: String!) : AuthToken!
     CreateProject(projectName: String! , userId: Int!) : Boolean!
     EditProject(id: Int! ,projectName: String ) : Boolean!
     DeleteProject(id: Int!) : Boolean!
@@ -40,12 +40,17 @@ type Mutation{
     EditDetailProject(id: Int! , DetailName: String) : Boolean!
     DeleteDetailProject(id: Int!) : Boolean!
 }
-type Boolean{
+type AuthToken{
     result: Boolean!
+    error : String
+    token : String
+}
+type Boolean{
+    result : Boolean!
 }
 type GetProjectRes {
     result: Boolean!
-    error: String!
+    error: String
     project: Project
 }
 type GetSubProjectRes {
