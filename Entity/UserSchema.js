@@ -18,7 +18,7 @@ class Users extends BaseEntity {
   @Column({ type: "text", nullable: false })
   password = "";
 
-  @OneToMany(type => Projects, projects => projects.projectName)
+  @OneToMany(type => Projects, projects => projects.userId)
   project = Projects;
 
   ComparePassword(password) {
