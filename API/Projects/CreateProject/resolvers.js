@@ -1,5 +1,4 @@
 import Projects from "../../../Entity/ProjectSchema";
-import Users from "../../../Entity/UserSchema";
 import { getRepository } from "typeorm";
 
 const resolvers = {
