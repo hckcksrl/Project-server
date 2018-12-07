@@ -11,7 +11,7 @@ const resolvers = {
             .createQueryBuilder()
             .insert()
             .into(Projects)
-            .values({ projectName: args.projectName, userId: args.userId })
+            .values({ projectName: args.projectName, user: args.userId })
             .execute()
         );
         return {
