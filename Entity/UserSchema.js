@@ -5,6 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn
 } from "typeorm";
+import bcrypt from "bcrypt";
 import Projects from "./ProjectSchema";
 
 @Entity()
@@ -19,6 +20,10 @@ class Users extends BaseEntity {
 
   @OneToMany(type => Projects, projects => projects.projectName)
   project = Projects;
+
+  ComparePassword(password) {
+    return bcrypt.compare(password, this.password);
+  }
 }
 export default Users;
 
