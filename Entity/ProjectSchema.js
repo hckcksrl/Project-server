@@ -20,7 +20,7 @@ class Projects extends BaseEntity {
   subProject = SubProjects;
 
   @ManyToOne(type => Users, users => users.project, { cascade: true })
-  userId = Users;
+  user = Users;
 }
 export default Projects;
 
