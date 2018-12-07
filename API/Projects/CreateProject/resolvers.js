@@ -8,7 +8,7 @@ const resolvers = {
       try {
         const repo = getRepository(Projects);
         console.log(
-          repo
+          await repo
             .createQueryBuilder()
             .insert()
             .into(Projects)
