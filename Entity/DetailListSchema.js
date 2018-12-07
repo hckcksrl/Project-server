@@ -14,8 +14,10 @@ class DetailList extends BaseEntity {
   @Column({ type: "text", nullable: false })
   DetailName = "";
 
-  @ManyToOne(type => SubProjects, sub_projects => sub_projects.id)
-  SubProjectId = undefined;
+  @ManyToOne(type => SubProjects, sub_projects => sub_projects.DetailList, {
+    cascade: true
+  })
+  SubProjectId = SubProjects;
 }
 export default DetailList;
 
