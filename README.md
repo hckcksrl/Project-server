@@ -2,3 +2,5 @@
 
 ## Graphql TypeOrm DotEnv Bcrypt
 
+### TypeOrm => Sequelize
+
