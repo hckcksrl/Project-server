@@ -6,20 +6,20 @@ type User{
 }
 type Project{
     id: Int!
-    projectName: String!
+    projectname: String!
     subProject: [SubProject]
-    userId: Int!
+    userid: Int!
 }
 type SubProject{
     id: Int!
-    SubProjectName: String!
-    DetailList: [DetailList]
-    ProjectId: Int!
+    subprojectname: String!
+    detaillist: [DetailList]
+    projectid: Int!
 }
 type DetailList{
     id: Int!
-    DetailName: String!
-    SubProjectId: Int!
+    detailname: String!
+    subprojectid: Int!
 }
 type Query{
     GetProject(id: Int!) : GetProjectRes
@@ -30,14 +30,14 @@ type Query{
 type Mutation{
     Login(email: String! , password: String!) : AuthToken!
     Regist(email: String! , password: String!) : AuthToken!
-    CreateProject(projectName: String! , userId: Int!) : ProjectRes!
-    EditProject(id: Int! ,projectName: String ) : ProjectRes!
-    DeleteProject(id: Int!) : ProjectRes!
-    CreateSubProject(SubProjectName: String! , ProjectId: Int!) : Boolean!
-    EditSubProject(id: Int! , SubProjectName: String ) : Boolean! 
+    CreateProject(projectname: String! , userid: Int!) : ProjectRes!
+    EditProject(id: Int! ,projectname: String ) : ProjectRes!
+    DeleteProject(id: Int! userid : Int!) : ProjectRes!
+    CreateSubProject(subprojectname: String! , projectid: Int!) : Boolean!
+    EditSubProject(id: Int! , subprojectname: String ) : Boolean! 
     DeleteSubProject(id: Int!) : Boolean!
-    CreateDetailProject(DetailName: String! , SubProjectId: Int!) : Boolean!
-    EditDetailProject(id: Int! , DetailName: String) : Boolean!
+    CreateDetailProject(detailname: String! , projectid: Int!) : Boolean!
+    EditDetailProject(id: Int! , detailname: String) : Boolean!
     DeleteDetailProject(id: Int!) : Boolean!
 }
 type AuthToken{
