@@ -1,5 +1,6 @@
 import Sequelize from "sequelize";
 import Connection from "../database";
+import Projects from "./ProjectSchema";
 
 const Users = Connection.define(
   "users",
