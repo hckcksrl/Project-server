@@ -1,27 +1,35 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  ManyToOne
-} from "typeorm";
-import SubProjects from "./SubProjectSchema";
+import Sequelize from "sequelize";
+import Connection from "../database";
 import Users from "./UserSchema";
 
-@Entity()
-class Projects extends BaseEntity {
-  @PrimaryGeneratedColumn() id = undefined;
+const Projects = Connection.define(
+  "projects",
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    projectname: {
+      type: Sequelize.STRING,
+      allowNull: false
+    }
+    // user_id: {
+    //   type: Sequelize.INTEGER,
+    //   references: {
+    //     model: Users,
+    //     key: "id"
+    //   },
+    //   allowNull: false
+    // }
+  },
+  {
+    tableName: "projects",
+    timestamps: false
+  }
+);
 
-  @Column({ type: "text", nullable: false })
-  projectName = String;
-
-  @OneToMany(type => SubProjects, sub_projects => sub_projects.ProjectId)
-  subProject = SubProjects;
-
-  @ManyToOne(type => Users, users => users.project, { cascade: true })
-  user = Users;
-}
 export default Projects;
 
 // export const Project = new EntitySchema({
@@ -53,3 +61,33 @@ export default Projects;
 //     }
 //   }
 // });
+
+// TypeOrm
+
+// import {
+//   BaseEntity,
+//   Column,
+//   Entity,
+//   OneToMany,
+//   PrimaryGeneratedColumn,
+//   ManyToOne
+// } from "typeorm";
+// import SubProjects from "./SubProjectSchema";
+// import Users from "./UserSchema";
+
+// @Entity()
+// class Projects extends BaseEntity {
+//   @PrimaryGeneratedColumn() id = undefined;
+
+//   @Column({ type: "text", nullable: false })
+//   projectname = "";
+
+//   @OneToMany(type => SubProjects, sub_projects => sub_projects.project_)
+//   subproject = SubProjects;
+
+//   @ManyToOne(type => Users, users => users.project, {
+//     cascade: true,
+//     nullable: false
+//   })
+//   user_ = Users;
+// }
