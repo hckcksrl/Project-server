@@ -1,18 +1,14 @@
-import Projects from "../../../Entity/ProjectSchema";
-import { getRepository } from "typeorm";
+import Connection from "../../../database";
 
 const resolvers = {
   Mutation: {
     CreateProject: async (_, args) => {
       try {
-        const repo = getRepository(Projects);
         console.log(
-          await repo
-            .createQueryBuilder()
-            .insert()
-            .into(Projects)
-            .values({ projectName: args.projectName, user: args.userId })
-            .execute()
+          await Connection.model("projects").create({
+            projectname: args.projectname,
+            userId: args.userid
+          })
         );
         return {
           result: true,
