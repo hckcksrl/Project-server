@@ -11,8 +11,7 @@ const resolvers = {
       const users = await Connection.model("users").findOne({
         where: {
           id: args.id
-        },
-        include: [Projects]
+        }
       });
       if (users != null) {
         return {
