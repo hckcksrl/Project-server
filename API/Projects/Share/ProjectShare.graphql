@@ -1,8 +1,8 @@
 type Project{
     id: Int!
-    projectName: String!
-    subProject: [SubProject]
-    userId: Int!
+    projectname: String!
+    subproject: [SubProject]
+    userid: Int!
 }
 type ProjectRes{
     result : Boolean!
