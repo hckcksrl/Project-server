@@ -1,29 +1,34 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  ManyToOne
-} from "typeorm";
-import DetailList from "./DetailListSchema";
+import Sequelize from "sequelize";
+import Connection from "../database";
 import Projects from "./ProjectSchema";
 
-@Entity()
-class SubProjects extends BaseEntity {
-  @PrimaryGeneratedColumn() id = undefined;
-
-  @Column({ type: "text", nullable: false })
-  SubProjectName = "";
-
-  @ManyToOne(type => Projects, projects => projects.subProject, {
-    cascade: true
-  })
-  Project = Projects;
-
-  @OneToMany(type => DetailList, detail_list => detail_list.SubProject)
-  DetailList = DetailList;
-}
+const SubProjects = Connection.define(
+  "subprojects",
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    subprojectname: {
+      type: Sequelize.STRING,
+      allowNull: false
+    }
+    // project_id: {
+    //   type: Sequelize.INTEGER,
+    //   references: {
+    //     model: Projects,
+    //     key: "id"
+    //   },
+    //   allowNull: false
+    // }
+  },
+  {
+    tableName: "subprojects",
+    timestamps: false
+  }
+);
 export default SubProjects;
 
 // export const SubProject = new EntitySchema({
@@ -55,3 +60,31 @@ export default SubProjects;
 //     }
 //   }
 // });
+
+// import {
+//   BaseEntity,
+//   Column,
+//   Entity,
+//   OneToMany,
+//   PrimaryGeneratedColumn,
+//   ManyToOne
+// } from "typeorm";
+// import DetailList from "./DetailListSchema";
+// import Projects from "./ProjectSchema";
+
+// @Entity()
+// class SubProjects extends BaseEntity {
+//   @PrimaryGeneratedColumn() id = undefined;
+
+//   @Column({ type: "text", nullable: false })
+//   subprojectname = "";
+
+//   @ManyToOne(type => Projects, projects => projects.subproject, {
+//     cascade: true,
+//     nullable: false
+//   })
+//   project_ = Projects;
+
+//   @OneToMany(type => DetailList, detail_list => detail_list.SubProject)
+//   detaillist = DetailList;
+// }
