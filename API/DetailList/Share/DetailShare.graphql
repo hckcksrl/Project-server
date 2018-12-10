@@ -1,5 +1,5 @@
 type DetailList{
     id: Int!
-    DetailName: String!
-    SubProjectId: Int!
+    detailname: String!
+    subprojectid: Int!
 }
