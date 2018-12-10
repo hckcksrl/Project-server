@@ -1,24 +1,34 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  ManyToOne
-} from "typeorm";
+import Sequelize from "sequelize";
+import Connection from "../database";
 import SubProjects from "./SubProjectSchema";
+const DetailList = Connection.define(
+  "detail_list",
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
+    detailname: {
+      type: Sequelize.STRING,
+      allowNull: false
+    }
+    // subproject_id: {
+    //   type: Sequelize.INTEGER,
+    //   references: {
+    //     model: SubProjects,
+    //     key: "id"
+    //   },
+    //   allowNull: false
+    // }
+  },
+  {
+    tableName: "detail_list",
+    timestamps: false
+  }
+);
 
-@Entity()
-class DetailList extends BaseEntity {
-  @PrimaryGeneratedColumn() id = undefined;
-
-  @Column({ type: "text", nullable: false })
-  DetailName = "";
-
-  @ManyToOne(type => SubProjects, sub_projects => sub_projects.DetailList, {
-    cascade: true
-  })
-  SubProjectId = SubProjects;
-}
 export default DetailList;
 
 // export const Detail = new EntitySchema({
@@ -41,3 +51,25 @@ export default DetailList;
 //     }
 //   }
 // });
+
+// import {
+//   BaseEntity,
+//   Column,
+//   Entity,
+//   PrimaryGeneratedColumn,
+//   ManyToOne
+// } from "typeorm";
+// import SubProjects from "./SubProjectSchema";
+
+// @Entity()
+// class DetailList extends BaseEntity {
+//   @PrimaryGeneratedColumn() id = undefined;
+
+//   @Column({ type: "text", nullable: false })
+//   detailname = "";
+
+//   @ManyToOne(type => SubProjects, sub_projects => sub_projects.DetailList, {
+//     cascade: true
+//   })
+//   subproject_ = SubProjects;
+// }
