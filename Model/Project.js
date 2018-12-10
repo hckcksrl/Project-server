@@ -1,8 +1,8 @@
 class Projects {
-  constructor(id, projectName, subProject) {
+  constructor(id, projectname, subproject) {
     (this.id = id),
-      (this.projectName = projectName),
-      (this.subProject = subProject);
+      (this.projectname = projectname),
+      (this.subproject = subproject);
   }
 }
 module.exports = {
