@@ -6,15 +6,20 @@ const resolvers = {
     DeleteProject: async (_, args) => {
       try {
         const repo = getRepository(Projects);
+        // const project = await Projects.find({
+        //   where: {
+        //     id: args.id
+        //   }
+        // });
         console.log(
           await repo
             .createQueryBuilder()
-            .delete()
-            .from(Projects)
-            .where("id = :id and userId = :userId", { id: args.id, userId: 1 })
-            .execute()
+            .where({ id: args.id })
+            .getQuery()
+          // .from(Projects)
+          // .where("id = :id and user_id = :userId", { id: args.id, userId: 1 })
+          // .execute()
         );
-
         // if (project.user === 1) {
         return {
           result: true,
