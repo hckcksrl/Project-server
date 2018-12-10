@@ -1,30 +1,31 @@
-import {
-  BaseEntity,
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn
-} from "typeorm";
-import bcrypt from "bcrypt";
-import Projects from "./ProjectSchema";
+import Sequelize from "sequelize";
+import Connection from "../database";
 
-@Entity()
-class Users extends BaseEntity {
-  @PrimaryGeneratedColumn() id = undefined;
-
-  @Column({ type: "text", nullable: false, unique: true })
-  email = "";
-
-  @Column({ type: "text", nullable: false })
-  password = "";
-
-  @OneToMany(type => Projects, projects => projects.user)
-  project = Projects;
-
-  ComparePassword(password) {
-    return bcrypt.compare(password, this.password);
+const Users = Connection.define(
+  "users",
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      unique: true,
+      primaryKey: true
+    },
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true
+    },
+    password: {
+      type: Sequelize.STRING,
+      allowNull: false
+    }
+  },
+  {
+    tableName: "users",
+    timestamps: false
   }
-}
+);
 export default Users;
 
 // export const User = new EntitySchema({
@@ -56,3 +57,31 @@ export default Users;
 //     }
 //   }
 // });
+
+// import {
+//   BaseEntity,
+//   Column,
+//   Entity,
+//   OneToMany,
+//   PrimaryGeneratedColumn
+// } from "typeorm";
+// import bcrypt from "bcrypt";
+// import Projects from "./ProjectSchema";
+
+// @Entity({ synchronize: true })
+// class Users extends BaseEntity {
+//   @PrimaryGeneratedColumn() id = undefined;
+
+//   @Column({ type: "text", nullable: false, unique: true })
+//   email = "";
+
+//   @Column({ type: "text", nullable: false })
+//   password = "";
+
+//   @OneToMany(type => Projects, projects => projects.user_)
+//   project = Projects;
+
+//   ComparePassword(password) {
+//     return bcrypt.compare(password, this.password);
+//   }
+// }
