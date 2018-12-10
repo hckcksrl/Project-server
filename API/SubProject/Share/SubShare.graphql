@@ -1,6 +1,6 @@
 type SubProject{
     id: Int!
-    SubProjectName: String!
-    DetailList: [DetailList]
-    ProjectId: Int!
+    subprojectname: String!
+    detaillist: [DetailList]
+    projectid: Int!
 }
