@@ -1,12 +1,11 @@
-import Users from "../../../Entity/UserSchema";
+import Connection from "../../../database";
 import CreateJwt from "../../../JwtToken/CreateToken";
-import { getRepository } from "typeorm";
 
 const resolvers = {
   Mutation: {
     Regist: async (_, args) => {
       try {
-        const user = await Users.findOne({
+        const user = await Connection.model("users").findOne({
           where: {
             email: args.email
           }
@@ -18,14 +17,7 @@ const resolvers = {
             token: false
           };
         } else {
-          const repo = getRepository(Users);
-          await repo
-            .createQueryBuilder()
-            .insert()
-            .into(Users)
-            .values({ email: args.email, password: args.password })
-            .execute();
-
+          const createUser = Connection.model("users").create({ ...args });
           const token = await CreateJwt(createUser.email, createUser.password);
           return {
             result: true,
