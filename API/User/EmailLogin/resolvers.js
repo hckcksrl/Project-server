@@ -1,36 +1,37 @@
-import Users from "../../../Entity/UserSchema";
+import Connection from "../../../database";
 import CreateJwt from "../../../JwtToken/CreateToken";
 
 const resolvers = {
   Mutation: {
     Login: async (_, args) => {
       try {
-        const user = await Users.findOne({
+        const user = await Connection.model("users").findOne({
           where: {
             email: args.email
           }
         });
-        if (!user) {
+        if (user == null) {
           return {
             result: false,
             error: "not found",
             token: null
           };
-        }
-        const checkPass = user.ComparePassword(args.password);
-        if (checkPass) {
-          const token = CreateJwt(user.email);
-          return {
-            result: true,
-            error: null,
-            token: token
-          };
         } else {
-          return {
-            result: false,
-            error: "password not",
-            token: null
-          };
+          const checkPass = user.ComparePassword(args.password);
+          if (checkPass == user.password) {
+            const token = CreateJwt(user.email);
+            return {
+              result: true,
+              error: null,
+              token: "token"
+            };
+          } else {
+            return {
+              result: false,
+              error: "password not",
+              token: null
+            };
+          }
         }
       } catch (error) {
         return {
