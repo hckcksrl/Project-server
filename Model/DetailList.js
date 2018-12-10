@@ -1,8 +1,6 @@
 class DetailList {
-  constructor(id, DetailName, SubProjectId) {
-    (this.id = id),
-      (this.DetailName = DetailName),
-      (this.SubProjectId = SubProjectId);
+  constructor(id, detailname, subprojectid) {
+    (this.id = id), (this.detailname = detailname);
   }
 }
 module.exports = {
