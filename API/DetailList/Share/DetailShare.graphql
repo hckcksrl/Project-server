@@ -3,3 +3,7 @@ type DetailList{
     detailname: String!
     subprojectid: Int!
 }
+type DetailRes{
+    result : Boolean!
+    error : String
+}
