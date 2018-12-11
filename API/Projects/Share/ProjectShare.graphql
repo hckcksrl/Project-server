@@ -2,6 +2,7 @@ type Project{
     id: Int!
     projectname: String!
     subproject: [SubProject]
+    detaillist : [DetailList]
     userid: Int!
 }
 type ProjectRes{
