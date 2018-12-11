@@ -1,11 +1,13 @@
-import Connection from "../../../database";
+// import Connection from "../../../database";
 import CreateJwt from "../../../JwtToken/CreateToken";
+import Users from "../../../Entity/UserSchema";
+import { getRepository } from "typeorm";
 
 const resolvers = {
   Mutation: {
     Regist: async (_, args) => {
       try {
-        const user = await Connection.model("users").findOne({
+        const user = await Users.findOne({
           where: {
             email: args.email
           }
@@ -17,6 +19,13 @@ const resolvers = {
             token: false
           };
         } else {
+          const create = await getRepository(Users)
+            .createQueryBuilder()
+            .insert()
+            .into("users", Users)
+            .values({ ...args })
+            .execute();
+
           const createUser = Connection.model("users").create({ ...args });
           const token = await CreateJwt(createUser.email, createUser.password);
           return {
