@@ -3,6 +3,8 @@ type User{
     email: String!
     password: String
     project: [Project]
+    subproject : [SubProject]
+    detaillist : [DetailList]
 }
 type AuthToken{
     result: Boolean!
