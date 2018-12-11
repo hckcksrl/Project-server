@@ -5,32 +5,16 @@ const resolvers = {
   Mutation: {
     DeleteProject: async (_, args) => {
       try {
-        const repo = getRepository(Projects);
-        // const project = await Projects.find({
-        //   where: {
-        //     id: args.id
-        //   }
-        // });
-        console.log(
-          await repo
-            .createQueryBuilder()
-            .where({ id: args.id })
-            .getQuery()
-          // .from(Projects)
-          // .where("id = :id and user_id = :userId", { id: args.id, userId: 1 })
-          // .execute()
-        );
-        // if (project.user === 1) {
+        await getRepository(Projects)
+          .createQueryBuilder()
+          .delete()
+          .from(Projects)
+          .where({ id: args.id, user_: args.userid })
+          .execute();
         return {
           result: true,
           error: null
         };
-        // } else {
-        // return {
-        //   result: false,
-        //   error: "not auth"
-        // };
-        // }
       } catch (error) {
         return {
           result: false,
