@@ -1,6 +1,6 @@
 # Project-server
 
-## Graphql TypeOrm DotEnv Bcrypt Sequelize
+## Graphql TypeOrm DotEnv Bcrypt 
 
-### TypeOrm => Sequelize
+### TypeOrm 
 
