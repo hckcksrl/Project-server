@@ -1,11 +1,12 @@
 import Connection from "../../../database";
 import CreateJwt from "../../../JwtToken/CreateToken";
+import Users from "../../../Entity/UserSchema";
 
 const resolvers = {
   Mutation: {
     Login: async (_, args) => {
       try {
-        const user = await Connection.model("users").findOne({
+        const user = await Users.findOne({
           where: {
             email: args.email
           }
@@ -23,7 +24,7 @@ const resolvers = {
             return {
               result: true,
               error: null,
-              token: "token"
+              token: token
             };
           } else {
             return {
