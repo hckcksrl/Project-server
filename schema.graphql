@@ -1,14 +1,8 @@
-type User{
+
+type DetailList{
     id: Int!
-    email: String!
-    password: String
-    project: [Project]
-}
-type Project{
-    id: Int!
-    projectname: String!
-    subProject: [SubProject]
-    userid: Int!
+    detailname: String!
+    subprojectid: Int!
 }
 type SubProject{
     id: Int!
@@ -16,11 +10,22 @@ type SubProject{
     detaillist: [DetailList]
     projectid: Int!
 }
-type DetailList{
+type Project{
     id: Int!
-    detailname: String!
-    subprojectid: Int!
+    projectname: String!
+    subproject: [SubProject]
+    detaillist : [DetailList]
+    userid: Int!
 }
+type User{
+    id: Int!
+    email: String!
+    password: String
+    project: [Project]
+    subproject : [SubProject]
+    detaillist : [DetailList]
+}
+
 type Query{
     GetProject(id: Int!) : GetProjectRes
     GetSubProject(id: Int!) : GetSubProjectRes
@@ -33,20 +38,17 @@ type Mutation{
     CreateProject(projectname: String! , userid: Int!) : ProjectRes!
     EditProject(id: Int! ,projectname: String ) : ProjectRes!
     DeleteProject(id: Int! userid : Int!) : ProjectRes!
-    CreateSubProject(subprojectname: String! , projectid: Int!) : Boolean!
-    EditSubProject(id: Int! , subprojectname: String ) : Boolean! 
-    DeleteSubProject(id: Int!) : Boolean!
-    CreateDetailProject(detailname: String! , projectid: Int!) : Boolean!
-    EditDetailProject(id: Int! , detailname: String) : Boolean!
-    DeleteDetailProject(id: Int!) : Boolean!
+    CreateSubProject(subprojectname: String! , projectid: Int!) : SubProjectRes!
+    EditSubProject(id: Int! , subprojectname: String ) : SubProjectRes! 
+    DeleteSubProject(id: Int!) : SubProjectRes!
+    CreateDetailProject(detailname: String! , subprojectid: Int!) : DetailRes!
+    EditDetailProject(id: Int! , detailname: String) : DetailRes!
+    DeleteDetailProject(id: Int!) : DetailRes!
 }
 type AuthToken{
     result: Boolean!
     error : String
     token : String
-}
-type Boolean{
-    result : Boolean!
 }
 type GetProjectRes {
     result: Boolean!
@@ -69,6 +71,14 @@ type GetUserRes {
     user : User
 }
 type ProjectRes{
+    result : Boolean!
+    error : String
+}
+type SubProjectRes{
+    result : Boolean!
+    error : String
+}
+type DetailRes{
     result : Boolean!
     error : String
 }
