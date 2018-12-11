@@ -1,15 +1,17 @@
-import Connection from "../../../database";
+// import Connection from "../../../database";
+import { getConnection } from "typeorm";
+import Projects from "../../../Entity/ProjectSchema";
 
 const resolvers = {
   Mutation: {
     CreateProject: async (_, args) => {
       try {
-        console.log(
-          await Connection.model("projects").create({
-            projectname: args.projectname,
-            userId: args.userid
-          })
-        );
+        await getConnection()
+          .createQueryBuilder()
+          .insert()
+          .into(Projects)
+          .values({ projectname: args.projectname, user_: args.userid })
+          .execute();
         return {
           result: true,
           error: null
@@ -17,7 +19,7 @@ const resolvers = {
       } catch (error) {
         return {
           result: false,
-          error: "error"
+          error: "aa"
         };
       }
     }
