@@ -4,3 +4,7 @@ type SubProject{
     detaillist: [DetailList]
     projectid: Int!
 }
+type SubProjectRes{
+    result : Boolean!
+    error : String
+}
