@@ -1,0 +1,3 @@
+type Mutation{
+    CreateDetailProject(detailname: String! , subprojectid: Int!) : DetailRes!
+}
