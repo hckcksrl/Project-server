@@ -1,0 +1,3 @@
+type Mutation{
+    CreateSubProject(subprojectname: String! , projectid: Int!) : SubProjectRes!
+}
