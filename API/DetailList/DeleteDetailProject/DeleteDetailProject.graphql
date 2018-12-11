@@ -1,0 +1,3 @@
+type Mutation{
+    DeleteDetailProject(id: Int!) : DetailRes!
+}
