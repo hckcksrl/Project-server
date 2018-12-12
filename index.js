@@ -21,7 +21,7 @@ const server = new GraphQLServer({
   //     context
   //   };
   // },
-  middlewares: [middlewares]
+  middlewares: middlewares
 });
 
 const jwt = async (req, res, next) => {
