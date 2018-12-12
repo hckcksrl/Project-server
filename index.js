@@ -2,10 +2,40 @@ import { GraphQLServer } from "graphql-yoga";
 import { createConnection } from "typeorm";
 import ConnectionOptions from "./database";
 import schema from "./schema";
+import { Response, NextFunction, Request } from "express";
+import { middleware } from "graphql-middleware";
+import { cors } from "cors";
+import DecodeJwt from "./JwtToken/DecodeToken";
+
+const middlewares = () => {
+  server.express.use(jwt);
+  server.express.use(cors());
+};
 
 const server = new GraphQLServer({
-  schema
+  schema,
+  // context: (req) => {
+  //   const { connection: { context = null } = {} } = req;
+  //   return {
+  //     req: req.request,
+  //     context
+  //   };
+  // },
+  middlewares: [middlewares]
 });
+
+const jwt = async (req, res, next) => {
+  const token = req.get("X-JWT");
+  if (token) {
+    const user = await DecodeJwt(token);
+    if (user) {
+      req.user = user;
+    } else {
+      req.user = undefined;
+    }
+  }
+  next();
+};
 
 const appOption = {
   port: 4000,
