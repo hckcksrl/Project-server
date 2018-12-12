@@ -26,8 +26,7 @@ const resolvers = {
             .values({ ...args })
             .execute();
 
-          const createUser = Connection.model("users").create({ ...args });
-          const token = await CreateJwt(createUser.email, createUser.password);
+          const token = CreateJwt(args.email);
           return {
             result: true,
             error: null,
