@@ -38,12 +38,15 @@ type Mutation{
     CreateProject(projectname: String! , userid: Int!) : ProjectRes!
     EditProject(id: Int! ,projectname: String ) : ProjectRes!
     DeleteProject(id: Int! userid : Int!) : ProjectRes!
+    CompletedProject(id : Int) : ProjectRes!
     CreateSubProject(subprojectname: String! , projectid: Int!) : SubProjectRes!
     EditSubProject(id: Int! , subprojectname: String ) : SubProjectRes! 
     DeleteSubProject(id: Int!) : SubProjectRes!
+    CompletedSubProject(id : Int) : SubProjectRes!
     CreateDetailProject(detailname: String! , subprojectid: Int!) : DetailRes!
     EditDetailProject(id: Int! , detailname: String) : DetailRes!
     DeleteDetailProject(id: Int!) : DetailRes!
+    CompletedDetailProject(id : Int) : DetailRes!
 }
 type AuthToken{
     result: Boolean!
