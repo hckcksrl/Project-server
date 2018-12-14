@@ -16,6 +16,9 @@ class SubProjects extends BaseEntity {
   @Column({ type: "text", nullable: false })
   subprojectname = "";
 
+  @Column({ type: "boolean", default: false })
+  completed = false;
+
   @ManyToOne(type => Projects, projects => projects.subproject, {
     cascade: true,
     nullable: false,
