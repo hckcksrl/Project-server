@@ -14,6 +14,9 @@ class DetailList extends BaseEntity {
   @Column({ type: "text", nullable: false })
   detailname = "";
 
+  @Column({ type: "boolean", default: false })
+  completed = false;
+
   @ManyToOne(type => SubProjects, sub_projects => sub_projects.DetailList, {
     cascade: true
   })
