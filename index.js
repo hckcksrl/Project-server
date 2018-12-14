@@ -2,8 +2,6 @@ import { GraphQLServer } from "graphql-yoga";
 import { createConnection } from "typeorm";
 import ConnectionOptions from "./database";
 import schema from "./schema";
-import { Response, NextFunction, Request } from "express";
-import { middleware } from "graphql-middleware";
 import { cors } from "cors";
 import DecodeJwt from "./JwtToken/DecodeToken";
 
@@ -14,13 +12,6 @@ const middlewares = () => {
 
 const server = new GraphQLServer({
   schema,
-  // context: (req) => {
-  //   const { connection: { context = null } = {} } = req;
-  //   return {
-  //     req: req.request,
-  //     context
-  //   };
-  // },
   middlewares: middlewares
 });
 
