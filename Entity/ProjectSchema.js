@@ -16,6 +16,9 @@ class Projects extends BaseEntity {
   @Column({ type: "text", nullable: false })
   projectname = "";
 
+  @Column({ type: "boolean", default: false })
+  completed = false;
+
   @OneToMany(type => SubProjects, sub_projects => sub_projects.project_)
   subproject = SubProjects;
 
