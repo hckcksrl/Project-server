@@ -19,7 +19,7 @@ const resolvers = {
             token: false
           };
         } else {
-          const create = await getRepository(Users)
+          await getRepository(Users)
             .createQueryBuilder()
             .insert()
             .into("users", Users)
