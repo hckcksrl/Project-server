@@ -31,6 +31,7 @@ type Query{
     GetSubProject(id: Int!) : GetSubProjectRes
     GetDetailList(id: Int!) : GetDetailListRes
     GetUsers(id: Int!) : GetUserRes
+    GetMy : GetUserRes
 }
 type Mutation{
     Login(email: String! , password: String!) : AuthToken!
