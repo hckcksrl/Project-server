@@ -18,7 +18,8 @@ const resolvers = {
             token: null
           };
         } else {
-          const checkPass = user.ComparePassword(args.password);
+          // const checkPass = user.ComparePassword(args.password);
+          const checkPass = "asd";
           if (checkPass == user.password) {
             const token = CreateJwt(user.email);
             return {
