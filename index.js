@@ -2,20 +2,33 @@ import { GraphQLServer } from "graphql-yoga";
 import { createConnection } from "typeorm";
 import ConnectionOptions from "./database";
 import schema from "./schema";
-import { cors } from "cors";
+import cors from "cors";
 import DecodeJwt from "./JwtToken/DecodeToken";
+import dotenv from "dotenv";
+import bodyParser from "body-parser";
+dotenv.config({ path: "./bin/.env" });
 
-const middlewares = () => {
+const server = new GraphQLServer({
+  schema,
+  context: req => {
+    const { connection: { context = null } = {} } = req;
+    return {
+      req: req.request,
+      context
+    };
+  },
+  middlewares: middleware
+});
+
+const middleware = () => {
+  server.express.use(bodyParser.json());
+  server.express.use(bodyParser.urlencoded({ extended: true }));
   server.express.use(jwt);
   server.express.use(cors());
 };
 
-const server = new GraphQLServer({
-  schema,
-  middlewares: middlewares
-});
-
 const jwt = async (req, res, next) => {
+  console.log(req);
   const token = req.get("X-JWT");
   if (token) {
     const user = await DecodeJwt(token);
@@ -29,7 +42,7 @@ const jwt = async (req, res, next) => {
 };
 
 const appOption = {
-  port: 4000,
+  port: process.env.PORT,
   endpoint: "/graphql",
   playground: "/playground",
   subscriptions: "/subscriptions"
