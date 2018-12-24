@@ -7,7 +7,6 @@ const DecodeJwt = async token => {
   try {
     const decode = jwt.verify(token, process.env.JWT_SECRET || "");
     const { email } = decode;
-    console.log(email);
     const user = await Users.findOne({
       where: {
         email: email
