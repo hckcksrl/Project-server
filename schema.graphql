@@ -35,7 +35,7 @@ type Query{
 type Mutation{
     Login(email: String! , password: String!) : AuthToken!
     Regist(email: String! , password: String!) : AuthToken!
-    CreateProject(projectname: String! , userid: Int!) : ProjectRes!
+    CreateProject(projectname: String!) : ProjectRes!
     EditProject(id: Int! ,projectname: String ) : ProjectRes!
     DeleteProject(id: Int! userid : Int!) : ProjectRes!
     CompletedProject(id : Int) : ProjectRes!
