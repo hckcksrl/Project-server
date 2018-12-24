@@ -13,24 +13,21 @@ const server = new GraphQLServer({
   context: req => {
     const { connection: { context = null } = {} } = req;
     return {
-      req: req.request,
-      context
+      req: req.request
     };
-  },
-  middlewares: middleware
+  }
 });
 
 const middleware = () => {
+  server.express.use(jwt);
   server.express.use(bodyParser.json());
   server.express.use(bodyParser.urlencoded({ extended: true }));
-  server.express.use(jwt);
   server.express.use(cors());
 };
 
 const jwt = async (req, res, next) => {
-  console.log(req);
-  const token = req.get("X-JWT");
-  if (token) {
+  const token = req.get("authorization");
+  if (token != undefined) {
     const user = await DecodeJwt(token);
     if (user) {
       req.user = user;
@@ -51,6 +48,7 @@ const appOption = {
 const result = () => console.log("Start");
 createConnection(ConnectionOptions)
   .then(() => {
+    middleware();
     server.start(appOption, result);
   })
   .catch(error => console.log(error));
