@@ -1,3 +1,3 @@
 type Mutation{
-    CreateProject(projectname: String! , userid: Int!) : ProjectRes!
+    CreateProject(projectname: String!) : ProjectRes!
 }
