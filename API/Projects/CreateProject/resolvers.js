@@ -4,16 +4,16 @@ import Projects from "../../../Entity/ProjectSchema";
 
 const resolvers = {
   Mutation: {
-    CreateProject: async (_, args) => {
+    CreateProject: async (_, args, { req }) => {
       try {
-        console.log(
-          await getRepository(Projects)
-            .createQueryBuilder()
-            .insert()
-            .into("projects", Projects)
-            .values({ projectname: args.projectname, user_: args.userid })
-            .execute()
-        );
+        const { user } = req;
+
+        await getRepository(Projects)
+          .createQueryBuilder()
+          .insert()
+          .into("projects", Projects)
+          .values({ projectname: args.projectname, user_: user.id })
+          .execute();
 
         return {
           result: true,
@@ -23,7 +23,7 @@ const resolvers = {
         console.log(args);
         return {
           result: false,
-          error: "aa"
+          error: "error"
         };
       }
     }
