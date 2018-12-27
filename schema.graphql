@@ -29,7 +29,7 @@ type Query{
     GetProject(id: Int!) : GetProjectRes
     GetSubProject(id: Int!) : GetSubProjectRes
     GetDetailList(id: Int!) : GetDetailListRes
-    GetUsers(id: Int!) : GetUserRes
+    GetUser(id: Int!) : GetUserRes
     GetMy : GetUserRes
 }
 type Mutation{
@@ -37,7 +37,7 @@ type Mutation{
     Regist(email: String! , password: String!) : AuthToken!
     CreateProject(projectname: String!) : ProjectRes!
     EditProject(id: Int! ,projectname: String ) : ProjectRes!
-    DeleteProject(id: Int! userid : Int!) : ProjectRes!
+    DeleteProject(id: Int!) : ProjectRes!
     CompletedProject(id : Int) : ProjectRes!
     CreateSubProject(subprojectname: String! , projectid: Int!) : SubProjectRes!
     EditSubProject(id: Int! , subprojectname: String ) : SubProjectRes! 
@@ -52,6 +52,7 @@ type AuthToken{
     result: Boolean!
     error : String
     token : String
+    id : Int!
 }
 type GetProjectRes {
     result: Boolean!
