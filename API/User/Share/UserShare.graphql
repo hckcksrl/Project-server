@@ -9,5 +9,6 @@ type User{
 type AuthToken{
     result: Boolean!
     error : String
-    token : String
+    token : String,
+    id : Int!
 }
