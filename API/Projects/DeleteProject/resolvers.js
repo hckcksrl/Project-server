@@ -3,13 +3,14 @@ import { getRepository } from "typeorm";
 
 const resolvers = {
   Mutation: {
-    DeleteProject: async (_, args) => {
+    DeleteProject: async (_, args, { req }) => {
       try {
+        const { user } = req;
         await getRepository(Projects)
           .createQueryBuilder()
           .delete()
           .from(Projects)
-          .where({ id: args.id, user_: args.userid })
+          .where({ id: args.id, user_: user.id })
           .execute();
         return {
           result: true,
