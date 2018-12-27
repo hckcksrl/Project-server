@@ -15,7 +15,8 @@ const resolvers = {
           return {
             result: false,
             error: "not found",
-            token: null
+            token: null,
+            id: null
           };
         } else {
           // const checkPass = user.ComparePassword(args.password);
@@ -25,13 +26,15 @@ const resolvers = {
             return {
               result: true,
               error: null,
-              token: token
+              token: token,
+              id: user.id
             };
           } else {
             return {
               result: false,
               error: "password not",
-              token: null
+              token: null,
+              id: null
             };
           }
         }
@@ -39,7 +42,8 @@ const resolvers = {
         return {
           result: false,
           error: "error",
-          token: null
+          token: null,
+          id: null
         };
       }
     }
