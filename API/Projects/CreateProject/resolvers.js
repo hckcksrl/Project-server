@@ -14,16 +14,22 @@ const resolvers = {
           .into("projects", Projects)
           .values({ projectname: args.projectname, user_: user.id })
           .execute();
+        const project = await Projects.findOne({
+          where: {
+            id: args.id
+          }
+        });
 
         return {
           result: true,
-          error: null
+          error: null,
+          project: project
         };
       } catch (error) {
-        console.log(args);
         return {
           result: false,
-          error: "error"
+          error: "error",
+          project: null
         };
       }
     }
