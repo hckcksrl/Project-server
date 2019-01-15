@@ -1,11 +1,12 @@
 const resolvers = {
   Query: {
-    GetMy: async (_, __, { req }) => {
+    GetMy: (_, args, { req }) => {
       const { user } = req;
+
       return {
         result: true,
         error: null,
-        user
+        user: user
       };
     }
   }
