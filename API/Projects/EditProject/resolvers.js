@@ -1,5 +1,4 @@
 import Projects from "../../../Entity/ProjectSchema";
-import { astFromValue } from "graphql";
 import { getRepository } from "typeorm";
 
 const resolvers = {
@@ -12,14 +11,22 @@ const resolvers = {
           .set({ projectname: args.projectname })
           .where({ id: args.id })
           .execute();
+
+        const project = await Projects.findOne({
+          where: {
+            id: args.id
+          }
+        });
         return {
           result: true,
-          error: null
+          error: null,
+          project: project
         };
       } catch (error) {
         return {
           result: false,
-          error: "Edit False"
+          error: "Edit False",
+          project: null
         };
       }
     }
