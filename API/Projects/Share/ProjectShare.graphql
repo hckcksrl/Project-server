@@ -8,4 +8,5 @@ type Project{
 type ProjectRes{
     result : Boolean!
     error : String
+    project: Project
 }
