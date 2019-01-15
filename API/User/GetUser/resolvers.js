@@ -8,6 +8,9 @@ const resolvers = {
       return await Projects.find({
         where: {
           user_: id
+        },
+        order: {
+          id: "ASC"
         }
       });
     }

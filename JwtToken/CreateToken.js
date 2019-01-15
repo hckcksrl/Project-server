@@ -9,8 +9,7 @@ const CreateJwt = email => {
     },
     process.env.JWT_SECRET || "",
     {
-      algorithm: "HS256",
-      expiresIn: 1000
+      algorithm: "HS256"
     }
   );
   return token;
