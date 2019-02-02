@@ -20,6 +20,9 @@ const resolvers = {
       return await SubProjects.find({
         where: {
           project_: id
+        },
+        order: {
+          id: "ASC"
         }
       });
     }
@@ -29,6 +32,9 @@ const resolvers = {
       return await DetailList.find({
         where: {
           subproject_: id
+        },
+        order: {
+          id: "ASC"
         }
       });
     }
