@@ -28,7 +28,7 @@ type User{
 type Query{
     GetProject(id: Int!) : GetProjectRes
     GetSubProject(id: Int!) : GetSubProjectRes
-    GetDetailList(id: Int!) : GetDetailListRes
+    GetDetailList(subprojectid: Int!) : GetDetailListRes
     GetUser(id: Int!) : GetUserRes
     GetMy : GetUserRes
 }
@@ -67,7 +67,7 @@ type GetSubProjectRes {
 type GetDetailListRes {
     result: Boolean!
     error: String
-    detail: DetailList
+    detaillist: [DetailList]
 }
 type GetUserRes {
     result : Boolean!
