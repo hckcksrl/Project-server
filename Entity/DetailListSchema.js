@@ -18,7 +18,7 @@ class DetailList extends BaseEntity {
   completed = false;
 
   @ManyToOne(type => SubProjects, sub_projects => sub_projects.DetailList, {
-    cascade: true
+    onDelete: "CASCADE"
   })
   subproject_ = SubProjects;
 }
