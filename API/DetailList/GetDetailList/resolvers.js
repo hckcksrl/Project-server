@@ -5,7 +5,10 @@ const resolvers = {
     GetDetailList: async (_, args) => {
       const detail = await DetailList.find({
         where: {
-          id: args.id
+          subproject_: args.subprojectid
+        },
+        order: {
+          id: "ASC"
         }
       });
       if (detail != null) {
